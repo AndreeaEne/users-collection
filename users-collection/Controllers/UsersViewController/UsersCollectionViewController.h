@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  UsersCollectionViewController.h
 //  users-collection
 //
 //  Created by Andreea Daniela Ene on 01/11/2017.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface UsersCollectionViewController : UICollectionViewController
 
 @end
-
