@@ -18,6 +18,9 @@
 		6D7AFD821FA9F0A400283059 /* triangle_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D7AFD781FA9F0A300283059 /* triangle_full.png */; };
 		6D7AFD831FA9F0A400283059 /* hexagon_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D7AFD791FA9F0A300283059 /* hexagon_full.png */; };
 		6D7AFD891FA9F3E200283059 /* UsersCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7AFD881FA9F3E200283059 /* UsersCollectionViewController.m */; };
+		6D7AFD931FA9F5C100283059 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D7AFD901FA9F5C100283059 /* UserCell.xib */; };
+		6D7AFD941FA9F5C100283059 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7AFD911FA9F5C100283059 /* UserCell.m */; };
+		6D7AFD971FA9FA5500283059 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7AFD961FA9FA5500283059 /* User.m */; };
 		6D9E42661FA9E9990058FC61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9E42651FA9E9990058FC61 /* AppDelegate.m */; };
 		6D9E426C1FA9E9990058FC61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D9E426A1FA9E9990058FC61 /* Main.storyboard */; };
 		6D9E426E1FA9E9990058FC61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D9E426D1FA9E9990058FC61 /* Assets.xcassets */; };
@@ -40,6 +43,11 @@
 		6D7AFD791FA9F0A300283059 /* hexagon_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hexagon_full.png; sourceTree = "<group>"; };
 		6D7AFD871FA9F3E200283059 /* UsersCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsersCollectionViewController.h; sourceTree = "<group>"; };
 		6D7AFD881FA9F3E200283059 /* UsersCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UsersCollectionViewController.m; sourceTree = "<group>"; };
+		6D7AFD901FA9F5C100283059 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserCell.xib; path = "users-collection/Controllers/UsersViewController/UserCell/UserCell.xib"; sourceTree = SOURCE_ROOT; };
+		6D7AFD911FA9F5C100283059 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserCell.m; path = "users-collection/Controllers/UsersViewController/UserCell/UserCell.m"; sourceTree = SOURCE_ROOT; };
+		6D7AFD921FA9F5C100283059 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserCell.h; path = "users-collection/Controllers/UsersViewController/UserCell/UserCell.h"; sourceTree = SOURCE_ROOT; };
+		6D7AFD951FA9FA5500283059 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		6D7AFD961FA9FA5500283059 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		6D9E42611FA9E9990058FC61 /* users-collection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "users-collection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D9E42641FA9E9990058FC61 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6D9E42651FA9E9990058FC61 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -72,6 +80,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6D7AFD8F1FA9F57000283059 /* UserCell */ = {
+			isa = PBXGroup;
+			children = (
+				6D7AFD921FA9F5C100283059 /* UserCell.h */,
+				6D7AFD911FA9F5C100283059 /* UserCell.m */,
+				6D7AFD901FA9F5C100283059 /* UserCell.xib */,
+			);
+			name = UserCell;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		6D7AFD981FA9FA5A00283059 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				6D7AFD951FA9FA5500283059 /* User.h */,
+				6D7AFD961FA9FA5500283059 /* User.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		6D7B21471FA9EDAF00D6427A /* Interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +112,7 @@
 		6D7B21481FA9EDBC00D6427A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6D7AFD981FA9FA5A00283059 /* User */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -147,6 +176,7 @@
 			children = (
 				6D7AFD871FA9F3E200283059 /* UsersCollectionViewController.h */,
 				6D7AFD881FA9F3E200283059 /* UsersCollectionViewController.m */,
+				6D7AFD8F1FA9F57000283059 /* UserCell */,
 			);
 			path = UsersViewController;
 			sourceTree = "<group>";
@@ -179,11 +209,11 @@
 		6D9E42631FA9E9990058FC61 /* users-collection */ = {
 			isa = PBXGroup;
 			children = (
+				6D7B21491FA9EDC200D6427A /* Controllers */,
+				6D7B214A1FA9EDCA00D6427A /* Resources */,
 				6D7B214C1FA9EDE300D6427A /* Supporting Files */,
 				6D7B21481FA9EDBC00D6427A /* Models */,
 				6D7B21471FA9EDAF00D6427A /* Interface */,
-				6D7B214A1FA9EDCA00D6427A /* Resources */,
-				6D7B21491FA9EDC200D6427A /* Controllers */,
 			);
 			path = "users-collection";
 			sourceTree = "<group>";
@@ -271,6 +301,7 @@
 				6D7AFD7E1FA9F0A400283059 /* triangle.png in Resources */,
 				6D9E426C1FA9E9990058FC61 /* Main.storyboard in Resources */,
 				6D7AFD7C1FA9F0A400283059 /* square_full.png in Resources */,
+				6D7AFD931FA9F5C100283059 /* UserCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,8 +363,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D7AFD971FA9FA5500283059 /* User.m in Sources */,
 				6D9E42741FA9E9990058FC61 /* main.m in Sources */,
 				6D7AFD891FA9F3E200283059 /* UsersCollectionViewController.m in Sources */,
+				6D7AFD941FA9F5C100283059 /* UserCell.m in Sources */,
 				6D9E42661FA9E9990058FC61 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
