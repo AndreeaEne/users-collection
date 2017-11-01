@@ -4,4 +4,5 @@ inhibit_all_warnings!
 target 'users-collection' do
   pod 'AFNetworking'
   pod 'JSONModel'
+  pod 'SDWebImage'
 end
