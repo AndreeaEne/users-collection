@@ -1,14 +1,19 @@
-#import "UsersCollectionViewController.h"
+// Models
 #import "User.h"
+
+// Views
+#import "UsersCollectionViewController.h"
 #import "UserCell.h"
 #import "UserDetailsViewController.h"
 
+// Pods
 #import <AFNetworking/AFNetworking.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface UsersCollectionViewController ()
 
-@property (strong, nonatomic) __block NSMutableArray *UsersData; // dictionary with all users
+// Dictionary with all users
+@property (strong, nonatomic) __block NSMutableArray *UsersData;
 
 @end
 
@@ -26,44 +31,32 @@
     [super loadView];
 }
 
-// Get information
+// Get information from API
 - (void) getDataFromAPI {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:@"https://randomuser.me/api/?page=0&results=100&seed=abc" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
-        
+    NSString *const url = @"https://randomuser.me/api/?page=0&results=100&seed=abc";
+    [manager GET:url parameters:nil progress:nil
+         success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
         _UsersData = [NSMutableArray new];
-        User *newUser = [[User alloc] init];
-        
-        
-        for (NSDictionary* item in responseObject[@"results"]) {
+        for (NSDictionary *item in responseObject[@"results"]) {
             NSError *errorDictorionary;
-            newUser = [[User alloc] initWithDictionary:item error:&errorDictorionary];
+            User *newUser = [[User alloc] initWithDictionary:item error:&errorDictorionary];
             if(errorDictorionary){
                 NSLog(@"Error dictionary: %@", errorDictorionary);
             }
-            [_UsersData addObject:newUser];
+            else [_UsersData addObject:newUser];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.collectionView reloadData];
         });
         
     }
-         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+     failure:^(NSURLSessionDataTask * _Nullable task, NSError *_Nonnull error) {
+         NSLog(@"Faliure: %@", error);
          }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma mark <UICollectionViewDataSource>
-
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
@@ -92,6 +85,7 @@
     return cell;
 }
 
+#pragma mark - Navigation
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     sentUser = _UsersData[indexPath.row];
     [self performSegueWithIdentifier:@"showUserInfo" sender:self];
@@ -101,36 +95,5 @@
     UserDetailsViewController *destVC = [segue destinationViewController];
     [destVC setUser:sentUser];
 }
-
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end
