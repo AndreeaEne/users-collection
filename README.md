@@ -1,4 +1,4 @@
-![icon](Readme/icon.png?style=centerme)
+<p align="center"><img src=Readme/icon.png></p>
 
 ![pres](Readme/pres.png)
 
