@@ -22,14 +22,18 @@
 }
 
 - (void)setUserInfo{
+    // Header info.
     _nameLabel.text = [[NSString stringWithFormat:@"%@ %@",myUser.firstname, myUser.lastname] capitalizedString];
     _ageAndLocationLabel.text = [NSString stringWithFormat:@"%@ from %@",myUser.age, myUser.nationality];
     NSData * data = [NSData dataWithContentsOfURL:myUser.image];
     _portraitImage.image = [UIImage imageWithData:data];
+    
+    // Body info.
     _usernameLabel.text = myUser.username;
     [_emailButton setTitle: myUser.email forState: UIControlStateNormal];
-    _phoneLabel.text = myUser.phone;
-    [_addressButton setTitle:[[NSString stringWithFormat:@"%@, %@", myUser.address, myUser.street] capitalizedString] forState:UIControlStateNormal];
+    [_phoneButton setTitle:myUser.phone forState:UIControlStateNormal];
+    [_addressButton setTitle:[[NSString stringWithFormat:@"%@, %@", myUser.address, myUser.street]
+                              capitalizedString] forState:UIControlStateNormal];
     
     // Some IDs and ID values are nil.
     if(myUser.ID_value != NULL || ![myUser.ID isEqualToString:@""])
@@ -72,5 +76,12 @@
     NSURL *URL = [NSURL URLWithString:addressToLinkTo];
     UIApplication *application = [UIApplication sharedApplication];
     [application openURL:URL options:@{} completionHandler:nil];
+}
+
+- (IBAction)showCaller:(id)sender {
+    NSString *phoneNum=[[_phoneButton.titleLabel.text componentsSeparatedByString:@"-"] componentsJoinedByString:@""];
+    NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", phoneNum]];
+    UIApplication *application = [UIApplication sharedApplication];
+    [application openURL:phoneURL options:@{} completionHandler:nil];
 }
 @end

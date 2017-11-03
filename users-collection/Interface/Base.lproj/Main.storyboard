@@ -255,13 +255,17 @@
                                                     <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="phone_placeholder" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCc-U8-p4B">
-                                                    <rect key="frame" x="141" y="11" width="226" height="21"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoP-0Z-Cef">
+                                                    <rect key="frame" x="141" y="8" width="226" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
-                                                    <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                    <state key="normal" title="phone_placeholder">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="showCaller:" destination="wNP-Fd-KgA" eventType="touchUpInside" id="atN-wg-kQT"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -307,7 +311,7 @@
                         <outlet property="emailButton" destination="7fu-Zs-9OA" id="Een-iq-mQT"/>
                         <outlet property="idLabel" destination="BFc-UU-q3t" id="U2O-2n-FpD"/>
                         <outlet property="nameLabel" destination="cKf-lx-gfH" id="hmz-dQ-07E"/>
-                        <outlet property="phoneLabel" destination="uCc-U8-p4B" id="gZg-BS-5Xo"/>
+                        <outlet property="phoneButton" destination="FoP-0Z-Cef" id="qAc-p1-TIq"/>
                         <outlet property="portraitImage" destination="itS-ap-TqP" id="CgB-2O-JA9"/>
                         <outlet property="usernameLabel" destination="r2A-Sd-bcH" id="6A0-cx-GIL"/>
                     </connections>
