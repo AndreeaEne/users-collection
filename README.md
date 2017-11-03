@@ -6,14 +6,14 @@ A mobile app that shows random users from [Random User Generator](http://randomu
 
 
 
-Features
+### Features
 
 - Lazy Loading when filling  the users list
 - Send e-mail to the users using the native app
 - Show users address with directions on Apple Maps
 - Call users
 
-Dependencies
+### Dependencies
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking)
 - [JSONModel](https://github.com/jsonmodel/jsonmode)
