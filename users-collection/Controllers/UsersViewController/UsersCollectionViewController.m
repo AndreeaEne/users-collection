@@ -12,7 +12,7 @@
 
 @interface UsersCollectionViewController ()
 
-// Dictionary with all users
+// Dictionary with all users.
 @property (strong, nonatomic) __block NSMutableArray *UsersData;
 
 @end
@@ -25,35 +25,40 @@
     [super viewDidLoad];
 }
 
-// Reloads the view with the new info
+// Reloads the view with the new info.
 - (void) loadView {
     [self getDataFromAPI];
     [super loadView];
 }
 
-// Get information from API
+// Get information from API.
 - (void) getDataFromAPI {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *const url = @"https://randomuser.me/api/?page=0&results=100&seed=abc";
-    [manager GET:url parameters:nil progress:nil
-         success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
-        _UsersData = [NSMutableArray new];
-        for (NSDictionary *item in responseObject[@"results"]) {
-            NSError *errorDictorionary;
-            User *newUser = [[User alloc] initWithDictionary:item error:&errorDictorionary];
-            if(errorDictorionary){
-                NSLog(@"Error dictionary: %@", errorDictorionary);
+    // Calling the method on a background thread.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        NSString *const url = @"https://randomuser.me/api/?page=0&results=1000&seed=abc";
+        [manager GET:url parameters:nil progress:nil
+             success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
+            _UsersData = [NSMutableArray new];
+            for (NSDictionary *item in responseObject[@"results"]) {
+                NSError *errorDictorionary;
+                User *newUser = [[User alloc] initWithDictionary:item error:&errorDictorionary];
+                if(errorDictorionary){
+                    NSLog(@"Error dictionary: %@", errorDictorionary);
+                }
+                else [_UsersData addObject:newUser];
             }
-            else [_UsersData addObject:newUser];
+            // Update the UI on the main thread.
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.collectionView reloadData];
+            });
+            
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.collectionView reloadData];
-        });
-        
-    }
-     failure:^(NSURLSessionDataTask * _Nullable task, NSError *_Nonnull error) {
-         NSLog(@"Faliure: %@", error);
-         }];
+         failure:^(NSURLSessionDataTask * _Nullable task, NSError *_Nonnull error) {
+             NSLog(@"Faliure: %@", error);
+             }];
+    });
 }
 
 #pragma mark <UICollectionViewDataSource>

@@ -19,7 +19,7 @@
                                                                   }];
 }
 
-// Calculates age from date
+// Calculates age from date.
 - (NSString *) age {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-mm-dd HH:mm:ss"];
